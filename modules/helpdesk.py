@@ -99,6 +99,19 @@ def _print_tools(tools: list[Tool]) -> None:
         print(f"{tool.identifier:<{width}}  {tool.summary}")
 
 
+def _pause_after_default_view() -> None:
+    """Keep a double-clicked Windows executable open until the user is ready."""
+    launched_without_arguments = len(sys.argv) == 1
+    if sys.platform != "win32" or not getattr(sys, "frozen", False):
+        return
+    if not launched_without_arguments:
+        return
+    try:
+        input("\nPress Enter to close the helpdesk...")
+    except EOFError:
+        pass
+
+
 def build_parser() -> argparse.ArgumentParser:
     """Create the command-line parser for helpdesk commands."""
     parser = argparse.ArgumentParser(
@@ -127,6 +140,7 @@ def main() -> int:
         print(f"Bioinformatics Toolkit Helpdesk ({len(tools)} functions)\n")
         _print_tools(tools)
         print("\nUse 'python -m modules.helpdesk show FUNCTION' for usage details.")
+        _pause_after_default_view()
         return 0
 
     matches = _matching_tools(tools, args.query)

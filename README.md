@@ -64,6 +64,8 @@ Run the following command from PowerShell in the toolkit directory:
 ```
 
 The executable is created at `releases/windows/helpdesk.exe`.
+When opened by double-clicking, the Windows executable waits for Enter before
+closing. Commands run with arguments still exit normally.
 
 ### Linux
 

@@ -1,0 +1,31 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments and local build tooling
+.venv/
+venv/
+.build-tools/
+
+# Packaging output
+build/
+dist/
+releases/
+*.spec
+
+# Coverage output
+.coverage
+.coverage.*
+htmlcov/
+
+# Local configuration and operating-system files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+desktop.ini
